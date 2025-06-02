@@ -23,7 +23,7 @@ const itemVariants = {
 };
 
 const ContactSection = () => {
-  const whatsappNumber = "5493518354396"; // Reemplaza con tu número de WhatsApp (sin +, con código de país)
+  const whatsappNumber = "543541315119"; // Reemplaza con tu número de WhatsApp (sin +, con código de país)
   const instagramUsername = "tuInstagramUser"; // Reemplaza con tu usuario de Instagram
 
   return (
