@@ -1,0 +1,42 @@
+/* src/pages/PageStyles.module.css */
+.pageContainer {
+  padding: var(--spacing-xl) 0;
+  min-height: 70vh; /* Asegura que la página tenga algo de altura */
+}
+
+.pageTitle {
+  font-size: var(--font-size-xxl);
+  font-family: var(--font-family-serif);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.pageTitleError {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: var(--spacing-lg);
+  color: var(--color-secondary);
+  font-weight: 600;
+  text-decoration: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.backLink:hover {
+  background-color: var(--color-background-medium);
+}
+
+.noProductsText {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xl);
+}

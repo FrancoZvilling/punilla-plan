@@ -1,0 +1,100 @@
+/* src/components/HeroSection/HeroSection.module.css */
+.hero {
+  min-height: 60vh; /* Mantenemos una buena altura para apreciar la imagen */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-xl) var(--spacing-md);
+  position: relative; /* Necesario para el overlay */
+  overflow: hidden;
+  color: var(--color-text-light); /* Texto blanco para que contraste con la imagen */
+
+  /* === IMAGEN DE FONDO (RUTA LOCAL) === */
+  background-image: url('../../assets/images/hero-background.jpg');
+  background-size: cover; /* Asegura que la imagen cubra todo el área */
+  background-position: center center; /* Centra la imagen */
+  background-repeat: no-repeat;
+  /* ==================================== */
+}
+
+/* Overlay oscuro para mejorar la legibilidad del texto sobre la imagen */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Overlay negro semitransparente */
+  /* Puedes ajustar la opacidad (el último valor, 0.5) para hacerlo más oscuro o más claro */
+  z-index: 0; /* Detrás del contenido del hero pero encima de la imagen de fondo */
+}
+
+/* Contenido del Hero debe estar sobre el overlay */
+.logoContainer, 
+.subtitle {
+  position: relative; 
+  z-index: 1;
+}
+
+.logoContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--spacing-xs);
+}
+
+.logoPP {
+  font-family: var(--font-family-display), 'Arial Black', sans-serif;
+  font-size: clamp(var(--font-size-display), 15vw, 7rem);
+  font-weight: 900;
+  color: var(--color-text-light);
+  line-height: 1;
+  z-index: 2; /* Encima de la estela si se superponen */
+  position: relative; /* Para que z-index funcione correctamente con otros elementos flex */
+}
+
+.blueTrail {
+  height: clamp(20px, 6vw, 35px);
+  background-color: var(--color-secondary);
+  position: relative;
+  z-index: 1; /* Detrás de PP */
+  margin-right: -10px; /* Para que el círculo se monte sobre el final de la estela */
+  margin-left: -15px;  /* Mueve la estela hacia la izquierda para que empiece "debajo" de PP */
+}
+
+.redCircle {
+  width: clamp(35px, 9vw, 60px);
+  height: clamp(35px, 9vw, 60px);
+  background-color: var(--color-primary);
+  border-radius: 50%;
+  position: relative;
+  z-index: 2; /* Encima de la estela */
+  box-shadow: 0 0 8px rgba(255, 0, 0, 0.5); /* Ligero brillo rojo opcional */
+}
+
+.subtitle {
+  font-family: var(--font-family-sans-serif);
+  font-size: clamp(var(--font-size-lg), 6vw, var(--font-size-xxl));
+  color: var(--color-text-light);
+  font-weight: 600;
+  margin-top: var(--spacing-xs);
+  letter-spacing: 0.5px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.7); /* Sombra de texto más pronunciada para legibilidad */
+}
+
+@media (min-width: 768px) {
+  .hero {
+    min-height: 55vh; /* Puedes ajustar la altura en desktop */
+  }
+  .blueTrail {
+    height: clamp(30px, 4vw, 45px);
+    margin-left: -20px; /* Podrías necesitar un ajuste diferente para desktop */
+  }
+  .redCircle {
+    width: clamp(50px, 6vw, 70px);
+    height: clamp(50px, 6vw, 70px);
+  }
+}

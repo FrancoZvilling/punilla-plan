@@ -1,0 +1,170 @@
+/* src/components/ProductList/ProductList.module.css */
+.noProductsFound {
+  text-align: center;
+  font-size: var(--font-size-lg);
+  color: var(--color-text-muted);
+  padding: var(--spacing-xl) 0;
+}
+
+.productListGrid {
+  display: grid;
+  grid-template-columns: 1fr; /* 1 columna en móviles muy pequeños */
+  gap: var(--spacing-lg);
+  padding: var(--spacing-md) 0;
+}
+
+.productCard {
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-light);
+  overflow: hidden; /* Para que la imagen no se salga si tiene bordes */
+  display: flex;
+  flex-direction: column;
+  text-decoration: none; /* Para el Link wrapper */
+  color: var(--color-text-dark);
+}
+
+.cardLinkWrapper { /* Contenedor del Link para imagen y contenido */
+  text-decoration: none;
+  color: inherit;
+  flex-grow: 1; /* Para que el contenido empuje las acciones hacia abajo */
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  width: 100%;
+  padding-top: 75%; /* Aspect ratio 4:3 para la imagen (75% de la anchura) */
+                  /* Para cuadrado, usa 100% */
+  position: relative;
+  background-color: var(--color-background-medium); /* Fondo mientras carga la imagen */
+}
+
+.productImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* o 'contain' si prefieres ver toda la imagen */
+  border-bottom: 1px solid var(--color-background-medium);
+}
+
+.cardContent {
+  padding: var(--spacing-md);
+  flex-grow: 1; /* Para que este contenido ocupe espacio disponible */
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-dark);
+  min-height: 2.4em; /* Espacio para dos líneas de texto aprox. */
+}
+
+.productPrice {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-sm);
+}
+
+.shortDescription { /* No lo estamos mostrando ahora, pero aquí estaría el estilo */
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+  flex-grow: 1; /* Para empujar los detalles técnicos hacia abajo si es necesario */
+}
+
+.technicalDetailsList {
+  font-size: var(--font-size-xs);
+  color: var(--color-text-muted);
+  list-style: disc;
+  padding-left: var(--spacing-md); /* Para ver los bullets */
+  margin-top: auto; /* Empuja esta lista hacia abajo si hay espacio */
+  margin-bottom: var(--spacing-sm);
+}
+.technicalDetailItem {
+  margin-bottom: var(--spacing-xs);
+}
+
+
+.cardActions {
+  display: flex;
+  justify-content: space-between; /* O 'space-around' */
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-top: 1px solid var(--color-background-medium);
+  background-color: #f9f9f9; /* Un fondo ligeramente diferente para la sección de acciones */
+}
+
+.actionButton {
+  flex-grow: 1; /* Para que los botones compartan el espacio */
+  margin: 0 var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-xs); /* Padding más pequeño para botones */
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+  border: 1px solid transparent;
+}
+.actionButton:active {
+    transform: scale(0.98);
+}
+
+.actionIcon {
+  margin-right: var(--spacing-xs);
+}
+
+.viewDetailsButton {
+  background-color: var(--color-background-medium);
+  color: var(--color-text-dark);
+  border-color: var(--color-text-muted);
+}
+.viewDetailsButton:hover {
+  background-color: #dcdcdc;
+}
+
+.addToCartButton {
+  background-color: var(--color-secondary); /* Azul */
+  color: var(--color-text-light);
+  border-color: var(--color-secondary);
+}
+.addToCartButton:hover {
+  background-color: #005f8c; /* Azul más oscuro */
+}
+
+
+/* Media Queries para la cuadrícula */
+@media (min-width: 480px) { /* 2 columnas para móviles un poco más anchos */
+  .productListGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) { /* 3 columnas para tablets */
+  .productListGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) { /* 4 columnas para desktop */
+  .productListGrid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+  }
+  .productName {
+    font-size: var(--font-size-md); /* Ajustar si es necesario para 4 columnas */
+  }
+  .productPrice {
+    font-size: var(--font-size-lg);
+  }
+}

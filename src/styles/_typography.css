@@ -1,0 +1,9 @@
+/* src/styles/_typography.css */
+/* Podríamos definir estilos globales para h1, h2, p, etc. aquí si es necesario */
+/* Por ejemplo:
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-serif);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+*/

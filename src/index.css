@@ -1,0 +1,13 @@
+/* src/index.css */
+/* Importa primero las variables para que estén disponibles */
+@import './styles/_variables.css';
+@import './styles/_base.css';
+@import './styles/_typography.css';
+@import './styles/_utilities.css';
+
+/* Aquí puedes añadir cualquier otro estilo global muy fundamental */
+body {
+    /* Puedes reconfirmar o añadir algo específico aquí si es necesario */
+    /* Por ejemplo, si quieres una fuente global para todo el body */
+    font-family: var(--font-family-sans-serif);
+}

@@ -1,0 +1,48 @@
+/* src/styles/_variables.css */
+:root {
+  /* Colores Principales */
+  --color-primary: #8B0000; /* Rojo Oscuro (clásico, como el círculo) */
+  --color-secondary: #0077B6; /* Azul (estela, moderno) */
+  --color-accent: #FFD700;   /* Dorado/Mostaza (toque de elegancia) */
+
+  /* Colores de Fondo y Texto */
+  --color-background-light: #F8F8F8; /* Un blanco ligeramente cálido, tipo papel */
+  --color-background-medium: #EAEAEA;
+  --color-background-dark: #333333;
+  --color-text-light: #FFFFFF;
+  --color-text-dark: #2C2C2C; /* Un negro no tan puro, más suave */
+  --color-text-muted: #757575;
+
+  /* Tipografía */
+  --font-family-sans-serif: 'Helvetica Neue', Arial, sans-serif; /* Moderna y legible */
+  --font-family-serif: 'Georgia', 'Times New Roman', serif; /* Clásica para títulos */
+  --font-family-display: 'Playfair Display', serif; /* Para el logo "PP", si queremos algo con más carácter */
+
+  /* Tamaños de Fuente (orientados a móviles primero, escalables con media queries) */
+  --font-size-xs: 0.75rem;  /* 12px */
+  --font-size-sm: 0.875rem; /* 14px */
+  --font-size-md: 1rem;     /* 16px (base) */
+  --font-size-lg: 1.25rem;  /* 20px */
+  --font-size-xl: 1.5rem;   /* 24px */
+  --font-size-xxl: 2rem;    /* 32px */
+  --font-size-display: 3rem; /* Para el "PP" */
+
+  /* Espaciado */
+  --spacing-xs: 0.25rem; /* 4px */
+  --spacing-sm: 0.5rem;  /* 8px */
+  --spacing-md: 1rem;    /* 16px */
+  --spacing-lg: 1.5rem;  /* 24px */
+  --spacing-xl: 2rem;    /* 32px */
+  --spacing-xxl: 3rem;   /* 48px */
+
+  /* Bordes */
+  --border-radius-sm: 4px;
+  --border-radius-md: 8px;
+
+  /* Sombras */
+  --box-shadow-light: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --box-shadow-medium: 0 4px 8px rgba(0, 0, 0, 0.15);
+
+  /* Transiciones */
+  --transition-smooth: all 0.3s ease-in-out;
+}

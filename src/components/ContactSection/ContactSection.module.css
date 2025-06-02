@@ -1,0 +1,127 @@
+/* src/components/ContactSection/ContactSection.module.css */
+.contactSection {
+  padding: var(--spacing-xxl) 0;
+  background-color: #001f3f; /* Fondo oscuro para destacar esta sección */
+  color: var(--color-text-light);
+  text-align: center;
+  overflow: hidden; /* Para que las animaciones no causen scroll */
+}
+
+.contactContainer { /* Clase .container viene de _utilities.css */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: clamp(var(--font-size-xl), 7vw, var(--font-size-xxl));
+  font-family: var(--font-family-serif);
+  color: var(--color-accent); /* Título en color acento (amarillo) */
+  margin-bottom: var(--spacing-md);
+}
+
+.subtitle {
+  font-size: clamp(var(--font-size-md), 4vw, var(--font-size-lg));
+  color: var(--color-background-medium); /* Un gris claro para el subtítulo */
+  margin-bottom: var(--spacing-xl);
+  max-width: 700px;
+}
+
+.contactOptions {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--spacing-xl);
+  width: 100%;
+  max-width: 900px; /* Limita el ancho máximo del contenedor de tarjetas */
+  margin-top: var(--spacing-lg);
+}
+
+.optionCard {
+  background-color: rgba(255, 255, 255, 0.05); /* Fondo muy sutil para las tarjetas */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: var(--border-radius-md);
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.icon {
+  font-size: 3.5rem; /* Tamaño grande para el icono principal de la tarjeta */
+  margin-bottom: var(--spacing-md);
+}
+
+.whatsappIcon {
+  color: #25D366; /* Verde WhatsApp */
+}
+
+.instagramIcon {
+  /* Gradiente de Instagram */
+  background: -webkit-linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #C13584; /* Fallback color */
+}
+
+.optionTitle {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-family-sans-serif);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-light);
+}
+
+.optionDescription {
+  font-size: var(--font-size-md);
+  color: var(--color-background-medium);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.7;
+  max-width: 450px; /* Para que el texto no sea demasiado ancho */
+}
+
+.contactButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text-light);
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  min-width: 220px; /* Ancho mínimo para los botones */
+}
+
+.buttonIcon {
+  margin-right: var(--spacing-sm);
+  font-size: 1.2em; /* Relativo al tamaño de fuente del botón */
+}
+
+.whatsappButton {
+  background-color: #25D366; /* Verde WhatsApp */
+  border: 2px solid #1DAA54;
+}
+.whatsappButton:hover {
+  background-color: #1DAA54; /* Verde más oscuro en hover */
+}
+
+.instagramButton {
+  /* Usaremos un color sólido representativo del gradiente para el fondo del botón */
+  background-color: #C13584; /* Rosa/Magenta de Instagram */
+  border: 2px solid #A32B72;
+}
+.instagramButton:hover {
+  background-color: #A32B72; /* Más oscuro en hover */
+}
+
+@media (min-width: 768px) {
+  .contactOptions {
+    grid-template-columns: repeat(2, 1fr); /* Dos columnas en desktop */
+    gap: var(--spacing-xl);
+  }
+  .optionCard {
+    padding: var(--spacing-xl) var(--spacing-lg);
+  }
+}

@@ -1,0 +1,142 @@
+/* src/pages/ProductPage.module.css */
+.productPageContainer { /* Extiende .pageContainer de PageStyles.module.css */
+  /* Podemos añadir padding específico si es necesario */
+}
+
+.backButton {
+  margin-bottom: var(--spacing-xl) !important; /* Más espacio y !important para sobreescribir si es necesario */
+  font-size: var(--font-size-md);
+}
+
+.productDetailLayout {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móvil */
+  gap: var(--spacing-xl);
+}
+
+.imageGallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mainImage {
+  max-width: 100%;
+  max-height: 500px; /* Limita la altura máxima de la imagen */
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--box-shadow-medium);
+  object-fit: contain; /* Para ver toda la imagen sin recortar */
+}
+/* Estilos para miniaturas si se añaden en el futuro
+.thumbnailContainer {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-md);
+}
+.thumbnail {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  border: 2px solid transparent;
+}
+.thumbnail.active, .thumbnail:hover {
+  border-color: var(--color-primary);
+}
+*/
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.productName {
+  font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-xxl));
+  font-family: var(--font-family-serif);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-sm);
+  line-height: 1.2;
+}
+
+.productPrice {
+  font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+}
+
+.shortDescription {
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted);
+  margin-bottom: var(--spacing-lg);
+  line-height: 1.6;
+}
+
+.detailsTitle {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-top: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
+  border-bottom: 2px solid var(--color-background-medium);
+  padding-bottom: var(--spacing-xs);
+}
+
+.technicalDetails {
+  list-style: disc;
+  padding-left: var(--spacing-lg); /* Para ver los bullets */
+  margin-bottom: var(--spacing-xl);
+  font-size: var(--font-size-md);
+  color: var(--color-text-dark);
+}
+.technicalDetails li {
+  margin-bottom: var(--spacing-xs);
+}
+
+.addToCartButton {
+  background-color: var(--color-secondary); /* Azul */
+  color: var(--color-text-light);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start; /* Para que no ocupe todo el ancho */
+}
+.addToCartButton:hover {
+  background-color: #005f8c; /* Azul más oscuro */
+}
+.addToCartButton:active {
+  transform: scale(0.98);
+}
+
+/* Media Queries para layout en desktop */
+@media (min-width: 768px) {
+  .productDetailLayout {
+    grid-template-columns: 1fr 1fr; /* Dos columnas: imagen | información */
+    gap: var(--spacing-xl);
+    align-items: flex-start; /* Alinea la parte superior de ambas columnas */
+  }
+  .mainImage {
+    max-height: 600px;
+  }
+  .productInfo {
+    /* Podríamos añadir un padding-left si es necesario */
+  }
+   .addToCartButton {
+    padding: var(--spacing-md) var(--spacing-xl); /* Asegurar buen tamaño en desktop */
+  }
+}
+
+@media (min-width: 1024px) {
+    .productDetailLayout {
+        gap: var(--spacing-xxl); /* Más espacio en pantallas grandes */
+        grid-template-columns: 0.8fr 1.2fr; /* Dar un poco más de espacio a la info */
+    }
+}
