@@ -18,7 +18,7 @@ const pageTransition = { type: "tween", ease: "anticipate", duration: 0.5 };
 const CartPage = () => {
   const { cartItems, getTotalPrice, getTotalItems, clearCart } = useCart();
   const navigate = useNavigate();
-  const whatsappNumber = "5493518354396"; // Reemplaza con tu número
+  const whatsappNumber = "5493541315119"; // Reemplaza con tu número
 
   const handleCheckout = () => {
     if (cartItems.length === 0) return;
