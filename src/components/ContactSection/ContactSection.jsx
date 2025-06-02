@@ -32,7 +32,7 @@ const ContactSection = () => {
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible" // Anima cuando la sección entra en la vista
-      viewport={{ once: true, amount: 0.3 }} // Ejecuta la animación una vez, cuando el 30% es visible
+      viewport={{ once: true, amount: 0.2 }} // Ejecuta la animación una vez, cuando el 30% es visible
     >
       <div className={`container ${styles.contactContainer}`}>
         <motion.h2 className={styles.title} variants={itemVariants}>
