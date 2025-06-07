@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './InstallmentTable.module.css';
-import { FaCheckCircle } from 'react-icons/fa'; // Icono para el botón de elegir
+import { FaCheckCircle } from 'react-icons/fa';
 
 const formatCurrency = (value) => {
   return new Intl.NumberFormat('es-AR', { style: 'currency', currency: 'ARS' }).format(value);
@@ -13,19 +13,29 @@ const InstallmentTable = ({ calculatedPlans, isInteractive, onPlanSelected, prod
     return <p>No hay planes de financiación disponibles para este producto.</p>;
   }
 
+  // Textos abreviados para los data-label en MÓVIL
+  const mobileLabels = {
+    days: "Plan (Días)",
+    daily: "x Día",        // Sin $
+    weekly: "x Semana",   // Sin $
+    total: "Total",       // Sin $
+    action: "Elegir"
+  };
+
   const renderPlanRow = (planDetails, planKey) => (
     <motion.tr
-      key={`${planDetails.name}-${planKey}`} // Clave única
+      key={`${planDetails.name}-${planKey}`}
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: planKey * 0.05 }} // Animación escalonada
+      transition={{ duration: 0.3, delay: (parseInt(planKey.split('-')[1]) || 0) * 0.05 + (planKey.startsWith('punctual') ? 0 : calculatedPlans.length * 0.05) }}
     >
-      <td>{planDetails.days} días</td>
-      <td>{formatCurrency(planDetails.dailyPayment)}</td>
-      <td>{formatCurrency(planDetails.weeklyPayment)}</td>
-      <td>{formatCurrency(planDetails.totalToPay)}</td>
+      {/* data-label usa los textos de mobileLabels */}
+      <td data-label={mobileLabels.days}>{planDetails.days} días</td>
+      <td data-label={mobileLabels.daily}>{formatCurrency(planDetails.dailyPayment)}</td>
+      <td data-label={mobileLabels.weekly}>{formatCurrency(planDetails.weeklyPayment)}</td>
+      <td data-label={mobileLabels.total}>{formatCurrency(planDetails.totalToPay)}</td>
       {isInteractive && (
-        <td>
+        <td data-label={mobileLabels.action}>
           <motion.button
             className={styles.selectPlanButton}
             onClick={() => onPlanSelected(planDetails)}
@@ -48,10 +58,11 @@ const InstallmentTable = ({ calculatedPlans, isInteractive, onPlanSelected, prod
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Días</th>
-              <th>Cuota Diaria</th>
-              <th>Cuota Semanal (6 días)</th>
-              <th>Total a Pagar</th>
+              {/* Encabezados para ESCRITORIO con texto original */}
+              <th>Días del plan</th>
+              <th>Cuota diaria</th>
+              <th>Cuota semanal (6 días)</th>
+              <th>Total a pagar</th>
               {isInteractive && <th>Acción</th>}
             </tr>
           </thead>
@@ -66,10 +77,11 @@ const InstallmentTable = ({ calculatedPlans, isInteractive, onPlanSelected, prod
         <table className={styles.table}>
           <thead>
             <tr>
-              <th>Días</th>
-              <th>Cuota Diaria</th>
-              <th>Cuota Semanal (6 días)</th>
-              <th>Total a Pagar</th>
+              {/* Encabezados para ESCRITORIO con texto original */}
+              <th>Días del plan</th>
+              <th>Cuota diaria</th>
+              <th>Cuota semanal (6 días)</th>
+              <th>Total a pagar</th>
               {isInteractive && <th>Acción</th>}
             </tr>
           </thead>
