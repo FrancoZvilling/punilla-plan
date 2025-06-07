@@ -84,6 +84,7 @@ const Footer = () => {
 
       <div className={styles.copyRight}>
         <p>© {new Date().getFullYear()} Punilla Plan. Todos los derechos reservados.</p>
+        <p>Desarrollado por Franco Zvilling - <a href="https://wa.me/5493541315119" target="_blank">3541315119</a></p>
       </div>
     </motion.footer>
   );

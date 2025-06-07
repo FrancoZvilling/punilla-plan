@@ -1,0 +1,41 @@
+/* src/components/layout/ScrollToTopButton/ScrollToTopButton.module.css */
+.scrollToTopBtn {
+  position: fixed;
+  bottom: var(--spacing-xl); /* Espacio desde abajo */
+  right: var(--spacing-xl);  /* Espacio desde la derecha */
+  background-color: var(--color-secondary); /* Color azul, o el que prefieras */
+  color: var(--color-text-light);
+  border: none;
+  border-radius: 50%; /* Botón redondo */
+  width: 50px;  /* Tamaño del botón */
+  height: 50px; /* Tamaño del botón */
+  font-size: 1.5rem; /* Tamaño del icono */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--box-shadow-medium);
+  z-index: 1000; /* Asegurar que esté por encima de la mayoría de los elementos */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scrollToTopBtn:hover {
+  background-color: #005f8c; /* Azul más oscuro en hover */
+  transform: scale(1.1);
+}
+
+.scrollToTopBtn:active {
+  transform: scale(0.95);
+}
+
+/* Ajuste para que no choque con el footer en pantallas pequeñas si es necesario */
+@media (max-width: 768px) {
+  .scrollToTopBtn {
+    bottom: calc(var(--spacing-lg) + 60px); /* Ajusta 60px si tu footer es más alto o bajo */
+                                          /* O si el botón del carrito flotante está abajo */
+    right: var(--spacing-lg);
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+  }
+}

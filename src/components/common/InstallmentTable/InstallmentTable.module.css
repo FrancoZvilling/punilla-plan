@@ -1,0 +1,145 @@
+/* src/components/common/InstallmentTable/InstallmentTable.module.css */
+.installmentTableContainer {
+  margin: var(--spacing-md) 0;
+  padding: var(--spacing-sm);
+  background-color: var(--color-background-light);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--box-shadow-light);
+}
+
+.tableProductTitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-primary);
+  text-align: center;
+  margin-bottom: var(--spacing-md);
+  font-family: var(--font-family-serif);
+}
+
+.planCategory {
+  margin-bottom: var(--spacing-xl);
+}
+.planCategory:last-child {
+  margin-bottom: 0;
+}
+
+.categoryTitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--color-secondary);
+  text-align: left;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.table th,
+.table td {
+  border: 1px solid var(--color-background-medium);
+  padding: var(--spacing-sm);
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: var(--color-background-medium);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  white-space: nowrap; /* Evita que los encabezados se partan */
+}
+
+.table td {
+  color: var(--color-text-dark);
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: #f9f9f9; /* Filas alternas con color sutil */
+}
+.table tbody tr:hover {
+  background-color: #e9f5fa; /* Color de hover para la fila */
+}
+
+
+.selectPlanButton {
+  background-color: var(--color-accent);
+  color: var(--color-text-dark);
+  border: none;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+.selectPlanButton svg {
+  margin-right: var(--spacing-xs);
+}
+.selectPlanButton:hover {
+  background-color: #e6c300; /* Amarillo más oscuro */
+}
+
+/* Responsive para la tabla */
+@media (max-width: 768px) {
+  .table thead {
+    display: none; /* Ocultar encabezados tradicionales en móvil */
+  }
+  .table, .table tbody, .table tr, .table td {
+    display: block; /* Convertir tabla en bloques */
+    width: 100%;
+  }
+  .table tr {
+    margin-bottom: var(--spacing-md);
+    border: 1px solid var(--color-background-medium);
+    border-radius: var(--border-radius-sm);
+    padding: var(--spacing-sm);
+  }
+  .table td {
+    text-align: right; /* Alinear texto a la derecha */
+    padding-left: 50%; /* Espacio para la "etiqueta" del dato */
+    position: relative;
+    border: none; /* Quitar bordes internos de celda */
+    border-bottom: 1px dotted var(--color-background-medium); /* Separador sutil */
+    white-space: normal; /* Permitir que el texto se ajuste */
+  }
+  .table td:last-child {
+    border-bottom: none;
+  }
+  .table td::before { /* Añadir etiquetas de datos como pseudo-elementos */
+    content: attr(data-label);
+    position: absolute;
+    left: var(--spacing-sm);
+    width: calc(50% - var(--spacing-md)); /* Ancho de la etiqueta */
+    padding-right: var(--spacing-sm);
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+  }
+  /* Asignar data-label en el JSX (o aquí si se puede inferir) */
+  /* Esto es más complejo de hacer solo con CSS para cada celda,
+     idealmente se añadiría data-label en el JSX del componente InstallmentTable.
+     Por simplicidad, por ahora solo reestructuramos.
+     Si necesitas el efecto data-label, podemos ajustar el JSX.
+  */
+
+  .selectPlanButton { /* Botón ocupa más ancho en móvil */
+    width: 100%;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+  }
+  .table td:has(> .selectPlanButton) { /* Si la celda contiene el botón */
+    padding-left: var(--spacing-sm); /* Resetear padding para el botón */
+    text-align: center; /* Centrar el botón */
+  }
+  .table td:has(> .selectPlanButton)::before {
+    display: none; /* No mostrar etiqueta para la celda del botón */
+  }
+}

@@ -1,0 +1,69 @@
+/* src/components/common/Modal/Modal.module.css */
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1100; /* Encima de otros elementos como el botón del carrito */
+  padding: var(--spacing-md);
+}
+
+.modalContent {
+  background-color: var(--color-background-light);
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  max-width: 90vw; /* Ancho máximo del modal */
+  width: 700px; /* Ancho deseado, se ajustará con max-width */
+  max-height: 90vh; /* Alto máximo del modal */
+  overflow-y: auto; /* Scroll si el contenido es muy largo */
+  position: relative;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--color-background-medium);
+  margin-bottom: var(--spacing-md);
+}
+
+.modalTitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  margin: 0;
+  font-family: var(--font-family-serif);
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  padding: var(--spacing-xs);
+  line-height: 1; /* Para alinear bien el icono */
+}
+.closeButton:hover {
+  color: var(--color-primary);
+}
+
+.modalBody {
+  /* Estilos para el cuerpo del modal si son necesarios */
+}
+
+@media (max-width: 768px) {
+    .modalContent {
+        width: 95vw; /* Más ancho en móviles */
+        padding: var(--spacing-md);
+    }
+    .modalTitle {
+        font-size: var(--font-size-lg);
+    }
+}

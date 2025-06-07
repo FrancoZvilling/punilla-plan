@@ -8,7 +8,7 @@
 
 .productListGrid {
   display: grid;
-  grid-template-columns: 1fr; /* 1 columna en móviles muy pequeños */
+  grid-template-columns: 1fr;
   gap: var(--spacing-lg);
   padding: var(--spacing-md) 0;
 }
@@ -17,27 +17,26 @@
   background-color: var(--color-background-light);
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-light);
-  overflow: hidden; /* Para que la imagen no se salga si tiene bordes */
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  text-decoration: none; /* Para el Link wrapper */
+  text-decoration: none;
   color: var(--color-text-dark);
 }
 
-.cardLinkWrapper { /* Contenedor del Link para imagen y contenido */
+.cardLinkWrapper {
   text-decoration: none;
   color: inherit;
-  flex-grow: 1; /* Para que el contenido empuje las acciones hacia abajo */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
 
 .imageContainer {
   width: 100%;
-  padding-top: 75%; /* Aspect ratio 4:3 para la imagen (75% de la anchura) */
-                  /* Para cuadrado, usa 100% */
+  padding-top: 75%;
   position: relative;
-  background-color: var(--color-background-medium); /* Fondo mientras carga la imagen */
+  background-color: var(--color-background-medium);
 }
 
 .productImage {
@@ -46,13 +45,13 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* o 'contain' si prefieres ver toda la imagen */
+  object-fit: cover;
   border-bottom: 1px solid var(--color-background-medium);
 }
 
 .cardContent {
   padding: var(--spacing-md);
-  flex-grow: 1; /* Para que este contenido ocupe espacio disponible */
+  flex-grow: 1;
   display: flex;
   flex-direction: column;
 }
@@ -62,48 +61,73 @@
   font-weight: 600;
   margin-bottom: var(--spacing-sm);
   color: var(--color-text-dark);
-  min-height: 2.4em; /* Espacio para dos líneas de texto aprox. */
+  min-height: 2.4em;
+}
+
+/* --- NUEVOS ESTILOS y AJUSTES PARA PRECIO --- */
+.priceContainer {
+  margin-bottom: var(--spacing-sm);
 }
 
 .productPrice {
   font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--spacing-sm);
+  margin-bottom: var(--spacing-xs); /* Menor margen si el enlace va debajo */
+  display: flex; /* Para alinear el precio y la etiqueta si es necesario */
+  align-items: baseline; /* Alinea la base del precio y la etiqueta */
+  flex-wrap: wrap; /* Para que la etiqueta baje si no hay espacio */
 }
 
-.shortDescription { /* No lo estamos mostrando ahora, pero aquí estaría el estilo */
-  font-size: var(--font-size-sm);
+.priceTag {
+  font-size: var(--font-size-xs);
+  font-weight: 400;
   color: var(--color-text-muted);
-  margin-bottom: var(--spacing-sm);
-  flex-grow: 1; /* Para empujar los detalles técnicos hacia abajo si es necesario */
+  margin-left: var(--spacing-xs);
+  white-space: nowrap; /* Evita que se parta la etiqueta */
 }
+
+.viewInstallmentsLink {
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary); /* Azul para invitar al click */
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0; /* Sin padding para que parezca más un enlace */
+  display: inline; /* Para que esté en línea con el flujo de texto si es posible */
+  margin-top: var(--spacing-xs); /* Pequeño espacio arriba */
+}
+.viewInstallmentsLink:hover {
+  color: #0056b3; /* Azul más oscuro en hover */
+}
+/* --- FIN DE NUEVOS ESTILOS --- */
 
 .technicalDetailsList {
   font-size: var(--font-size-xs);
   color: var(--color-text-muted);
   list-style: disc;
-  padding-left: var(--spacing-md); /* Para ver los bullets */
-  margin-top: auto; /* Empuja esta lista hacia abajo si hay espacio */
+  padding-left: var(--spacing-md);
+  margin-top: auto;
   margin-bottom: var(--spacing-sm);
 }
 .technicalDetailItem {
   margin-bottom: var(--spacing-xs);
 }
 
-
 .cardActions {
   display: flex;
-  justify-content: space-between; /* O 'space-around' */
+  /* Como solo hay un botón, podemos centrarlo o alinearlo a un lado */
+  justify-content: center; /* O flex-start, flex-end */
   padding: var(--spacing-sm) var(--spacing-md);
   border-top: 1px solid var(--color-background-medium);
-  background-color: #f9f9f9; /* Un fondo ligeramente diferente para la sección de acciones */
+  background-color: #0056b3;
 }
 
 .actionButton {
-  flex-grow: 1; /* Para que los botones compartan el espacio */
+  /* flex-grow: 1; Ya no es necesario si solo hay un botón y no queremos que ocupe todo */
   margin: 0 var(--spacing-xs);
-  padding: var(--spacing-sm) var(--spacing-xs); /* Padding más pequeño para botones */
+  padding: var(--spacing-sm) var(--spacing-lg); /* Padding más generoso para un solo botón */
   font-size: var(--font-size-sm);
   font-weight: 600;
   border-radius: var(--border-radius-sm);
@@ -127,42 +151,35 @@
   background-color: var(--color-background-medium);
   color: var(--color-text-dark);
   border-color: var(--color-text-muted);
+  min-width: 150px; /* Darle un ancho mínimo al botón de detalles */
 }
 .viewDetailsButton:hover {
   background-color: #dcdcdc;
 }
 
-.addToCartButton {
-  background-color: var(--color-secondary); /* Azul */
-  color: var(--color-text-light);
-  border-color: var(--color-secondary);
-}
-.addToCartButton:hover {
-  background-color: #005f8c; /* Azul más oscuro */
-}
+/* Botón addToCartButton ya no es relevante aquí */
 
-
-/* Media Queries para la cuadrícula */
-@media (min-width: 480px) { /* 2 columnas para móviles un poco más anchos */
+/* Media Queries */
+@media (min-width: 480px) {
   .productListGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media (min-width: 768px) { /* 3 columnas para tablets */
+@media (min-width: 768px) {
   .productListGrid {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
   }
 }
 
-@media (min-width: 1024px) { /* 4 columnas para desktop */
+@media (min-width: 1024px) {
   .productListGrid {
     grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-xl);
   }
   .productName {
-    font-size: var(--font-size-md); /* Ajustar si es necesario para 4 columnas */
+    font-size: var(--font-size-md);
   }
   .productPrice {
     font-size: var(--font-size-lg);

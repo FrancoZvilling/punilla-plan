@@ -59,7 +59,7 @@
   /* padding: var(--spacing-xl) 0; Ya está en PageStyles */
 }
 
-.backButtonCart {
+.backButtonCart { 
     margin-bottom: var(--spacing-lg) !important;
 }
 
@@ -85,17 +85,18 @@
     text-decoration: none;
 }
 
+
 .cartGrid {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
   gap: var(--spacing-xl);
 }
 
 .cartItemsList {
-  flex-grow: 1;
+  flex-grow: 1; 
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-md);
+  gap: var(--spacing-md); 
 }
 
 .cartItem {
@@ -105,14 +106,13 @@
   border: 1px solid var(--color-background-medium);
   border-radius: var(--border-radius-sm);
   background-color: var(--color-background-light);
-  align-items: center; /* Default para desktop */
+  align-items: center; 
 }
-
 .cartItemImageContainer {
-    width: 80px; /* Default para desktop */
-    height: 80px; /* Default para desktop */
+    width: 80px; 
+    height: 80px; 
     flex-shrink: 0;
-    position: relative; /* Para imagen interna absoluta si se usa aspect ratio padding */
+    position: relative; 
     background-color: var(--color-background-medium);
     border-radius: var(--border-radius-xs);
     overflow: hidden;
@@ -121,7 +121,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  /* position: absolute; top:0; left:0; si se usa padding-top en el contenedor */
 }
 
 .cartItemInfo {
@@ -133,10 +132,10 @@
 
 .cartItemNameLink {
   text-decoration: none;
-  color: inherit;
+  color: inherit; 
 }
 .cartItemNameLink:hover .cartItemName {
-  color: var(--color-secondary);
+  color: var(--color-secondary); 
 }
 
 .cartItemName {
@@ -146,9 +145,28 @@
   margin-bottom: var(--spacing-xs);
   transition: color 0.2s ease;
 }
-.cartItemPrice {
-  font-size: var(--font-size-md);
+
+.cartItemPlanDescription { /* Nuevo */
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-secondary);
+  margin-bottom: var(--spacing-xs);
+}
+
+.cartItemInstallmentDetails { /* Nuevo */
+  font-size: var(--font-size-xs);
   color: var(--color-text-muted);
+  margin-bottom: var(--spacing-sm);
+  padding-left: var(--spacing-sm);
+  border-left: 2px solid var(--color-background-medium);
+}
+.cartItemInstallmentDetails p {
+  margin: 2px 0;
+}
+
+.cartItemPrice { 
+  font-size: var(--font-size-md);
+  color: var(--color-text-muted); 
   margin-bottom: var(--spacing-sm);
 }
 
@@ -156,7 +174,7 @@
   display: flex;
   align-items: center;
   gap: var(--spacing-sm);
-  margin-top: var(--spacing-xs);
+  margin-top: auto; 
 }
 .quantityControls button {
   background-color: var(--color-background-medium);
@@ -175,7 +193,7 @@
 .quantityControls button:hover {
     background-color: #ddd;
 }
-.quantityControls button:disabled {
+.quantityControls button:disabled { 
     opacity: 0.5;
     cursor: not-allowed;
 }
@@ -187,17 +205,17 @@
 }
 
 .cartItemSubtotal {
-    min-width: 120px;
-    text-align: right; /* Default para desktop */
+    min-width: 120px; 
+    text-align: right; 
     font-weight: 600;
     font-size: var(--font-size-md);
-    margin-left: var(--spacing-sm); /* Default para desktop */
+    margin-left: var(--spacing-sm); 
 }
 .cartItemSubtotal p {
     margin: 0;
 }
 
-.removeItemButton { /* Estilos base / desktop */
+.removeItemButton { 
   background: none;
   border: none;
   color: var(--color-primary);
@@ -206,16 +224,15 @@
   padding: var(--spacing-xs);
   margin-left: var(--spacing-sm);
   transition: color 0.2s ease, transform 0.2s ease;
-  align-self: center; /* Para centrarlo verticalmente en desktop */
+  align-self: center; 
 }
 .removeItemButton:hover {
   color: darkred;
   transform: scale(1.1);
 }
-.removeItemButton svg { /* Para resetear tamaño si se cambia en móvil */
+.removeItemButton svg { 
     font-size: inherit;
 }
-
 
 .cartSummary {
   padding: var(--spacing-lg);
@@ -227,7 +244,7 @@
   font-size: var(--font-size-xl);
   font-weight: 600;
   margin-bottom: var(--spacing-md);
-  text-align: center;
+  text-align: center; 
 }
 .summaryRow {
   display: flex;
@@ -255,7 +272,7 @@
   cursor: pointer;
   margin-top: var(--spacing-lg);
   transition: background-color 0.2s ease;
-  display: flex;
+  display: flex; 
   align-items: center;
   justify-content: center;
 }
@@ -285,17 +302,15 @@
 @media(max-width: 600px) {
     .cartItem {
         flex-direction: column;
-        align-items: flex-start; /* Todo el contenido del item a la izquierda */
+        align-items: flex-start; 
     }
     .cartItemImageContainer {
-        width: 100%; /* Imagen ocupa todo el ancho */
-        height: auto; /* Altura automática */
-        padding-top: 75%; /* Opcional: Mantiene aspect ratio 4:3. Si no, quitar y la imagen define altura */
-        /* position: relative; ya está arriba */
+        width: 100%; 
+        height: auto; 
+        padding-top: 75%; 
         margin-bottom: var(--spacing-md);
     }
     .cartItemImage {
-        /* Si se usa padding-top en el contenedor, la imagen necesita position absolute */
         position: absolute;
         top: 0;
         left: 0;
@@ -304,33 +319,32 @@
         object-fit: cover;
     }
 
-    .cartItemInfo { /* El contenedor de nombre, precio, controles de cantidad */
+    .cartItemInfo { 
         width: 100%;
-        /* No es necesario display flex aquí si los elementos internos ya se apilan bien */
     }
     .cartItemName {
-        font-size: var(--font-size-md); /* Un poco más pequeño en móvil para más espacio */
+        font-size: var(--font-size-md); 
     }
 
     .quantityControls {
         margin-top: var(--spacing-sm);
-        align-self: flex-start; /* Alinear a la izquierda */
+        align-self: flex-start; 
     }
 
     .cartItemSubtotal {
         text-align: left;
         margin-top: var(--spacing-md);
-        margin-left: 0; /* Sin margen izquierdo en móvil */
+        margin-left: 0; 
         font-size: var(--font-size-lg);
         font-weight: 700;
         color: var(--color-primary);
     }
 
     .removeItemButton {
-        position: static; /* Vuelve al flujo normal */
-        align-self: flex-start; /* Alinear a la izquierda */
-        margin-top: var(--spacing-md); /* Espacio encima del botón */
-        margin-left: 0; /* Resetear margen */
+        position: static; 
+        align-self: flex-start; 
+        margin-top: var(--spacing-md); 
+        margin-left: 0; 
         padding: var(--spacing-sm) var(--spacing-md);
         background-color: var(--color-background-medium);
         color: var(--color-primary);
@@ -338,18 +352,14 @@
         border-radius: var(--border-radius-sm);
         display: inline-flex;
         align-items: center;
-        /* Para añadir texto al lado del icono:
-        width: auto; // Para que se ajuste al contenido
-        */
     }
     .removeItemButton svg {
-        font-size: 1.2rem; /* Ajustar tamaño del icono si es necesario */
-        /* margin-right: var(--spacing-xs); // Si tuviera texto */
+        font-size: 1.2rem; 
     }
     .removeItemButton:hover {
-        background-color: #ffebee; /* Un rojo muy clarito o el que prefieras */
-        color: var(--color-primary); /* Mantiene el color del icono */
-        transform: none; /* Quitar el scale en móvil si no se ve bien */
+        background-color: #ffebee; 
+        color: var(--color-primary); 
+        transform: none; 
     }
 }
 
@@ -358,30 +368,30 @@
         flex-direction: row;
         align-items: flex-start;
     }
-    .cartItem { /* Asegurar que los estilos de desktop se apliquen/reseteen */
+    .cartItem { 
         flex-direction: row;
         align-items: center;
     }
-    .cartItemImageContainer { /* Estilos de imagen para desktop */
+    .cartItemImageContainer { 
         width: 80px;
         height: 80px;
-        padding-top: 0; /* Quitar padding-top si se usó para aspect ratio en móvil */
-        position: relative; /* Puede ser static si la imagen no es absolute */
+        padding-top: 0; 
+        position: relative; 
     }
-    .cartItemImage { /* Estilos de imagen para desktop */
-        position: static; /* O relative si el contenedor es static */
+    .cartItemImage { 
+        position: static; 
         width: 100%;
         height: 100%;
         object-fit: cover;
     }
-    .cartItemSubtotal { /* Estilos de subtotal para desktop */
+    .cartItemSubtotal { 
         text-align: right;
         margin-left: var(--spacing-sm);
         font-size: var(--font-size-md);
         font-weight: 600;
-        color: var(--color-text-dark); /* O el color que tenías para desktop */
+        color: var(--color-text-dark); 
     }
-    .removeItemButton { /* Estilos de botón eliminar para desktop */
+    .removeItemButton { 
         position: static;
         background: none;
         border: none;
@@ -402,7 +412,55 @@
 
     .cartSummary {
         /* position: sticky;
-        top: calc(var(--spacing-md) + 70px); /* Ajusta 70px según altura del header/botón carrito */
-        /* height: fit-content; */
+        top: calc(var(--spacing-md) + 70px); 
+        height: fit-content; */
     }
+}
+
+/* --- Estilos para el Contenido del Modal de Confirmación --- */
+.confirmModalContent {
+  text-align: center;
+}
+
+.confirmModalContent p {
+  font-size: var(--font-size-lg);
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-xl);
+}
+
+.confirmModalActions {
+  display: flex;
+  justify-content: center; /* Centra los botones */
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-lg);
+}
+
+.modalButton {
+  padding: var(--spacing-sm) var(--spacing-lg);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  min-width: 120px; /* Ancho mínimo para los botones */
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.modalButtonConfirm {
+  background-color: var(--color-primary); /* Rojo (peligro/confirmar) */
+  color: var(--color-text-light);
+  border: 1px solid var(--color-primary);
+}
+.modalButtonConfirm:hover {
+  background-color: darkred; /* Rojo más oscuro */
+  border-color: darkred;
+}
+
+.modalButtonCancel {
+  background-color: var(--color-background-medium); /* Gris claro */
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-text-muted);
+}
+.modalButtonCancel:hover {
+  background-color: #ccc; /* Gris un poco más oscuro */
 }

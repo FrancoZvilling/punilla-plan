@@ -2,6 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import styles from './HeroSection.module.css';
+import logoImage from '../../assets/images/logo-punilla-plan.png'; // ASEGÚRATE QUE ESTA RUTA Y NOMBRE SON CORRECTOS
 
 const HeroSection = () => {
   return (
@@ -11,51 +12,24 @@ const HeroSection = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8, ease: 'easeOut' }}
     >
-      <div className={styles.logoContainer}>
-        <motion.div
-          className={styles.logoPP}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-        >
-          PP
-        </motion.div>
-
-        <motion.div
-          className={styles.blueTrail}
-          initial={{ width: 0, opacity: 0, x: -10 }} // Inicia con ancho 0 y ligeramente a la izquierda de su posición final
-          animate={{ width: 'clamp(40px, 10vw, 70px)', opacity: 1, x: 0 }} // Anima el ancho y la posición
-          transition={{ duration: 0.6, delay: 0.5, type: 'spring', stiffness: 100 }}
-        >
-          {/* La estela ahora es un simple div estilizado con CSS */}
-        </motion.div>
-
-        <motion.div
-          className={styles.redCircle}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.4, delay: 0.9, type: 'spring', bounce: 0.4 }}
-        >
-        </motion.div>
-      </div>
-
-      <motion.h2
-        className={styles.subtitle}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.2 }}
+      {/* Contenedor del Logo Imagen (ya no necesita el logoAndEffectContainer si solo está el logo) */}
+      <motion.div
+        className={styles.logoImageContainer}
+        initial={{ opacity: 0, y: -30, scale: 0.9 }} // Animación de entrada para el logo
+        animate={{ opacity: 1, y: 0, scale: 1 }}
+        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
       >
-        Punilla Plan
-      </motion.h2>
-      {/* Podrías añadir el "Venta de Equipamientos Comerciales" aquí si lo deseas */}
-      {/* <motion.p
-        className={styles.tagline}
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 1.4 }}
-      >
-        Venta de Equipamientos Comerciales
-      </motion.p> */}
+        <img 
+          src={logoImage} 
+          alt="Logo Punilla Plan" 
+          className={styles.logoImage} 
+          onError={(e) => { 
+            console.error("Error al cargar la imagen del logo:", e.target.src);
+            // Opcional: e.target.style.display = 'none'; 
+          }}
+        />
+      </motion.div>
+      {/* No hay estela, ni círculo, ni texto "PP" o "Punilla Plan" */}
     </motion.section>
   );
 };

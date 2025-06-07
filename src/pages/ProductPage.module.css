@@ -1,16 +1,16 @@
 /* src/pages/ProductPage.module.css */
-.productPageContainer { /* Extiende .pageContainer de PageStyles.module.css */
-  /* Podemos añadir padding específico si es necesario */
+.productPageContainer {
+  /* Estilos generales de la página */
 }
 
 .backButton {
-  margin-bottom: var(--spacing-xl) !important; /* Más espacio y !important para sobreescribir si es necesario */
+  margin-bottom: var(--spacing-xl) !important;
   font-size: var(--font-size-md);
 }
 
 .productDetailLayout {
   display: grid;
-  grid-template-columns: 1fr; /* Una columna en móvil */
+  grid-template-columns: 1fr;
   gap: var(--spacing-xl);
 }
 
@@ -22,29 +22,11 @@
 
 .mainImage {
   max-width: 100%;
-  max-height: 500px; /* Limita la altura máxima de la imagen */
+  max-height: 500px;
   border-radius: var(--border-radius-md);
   box-shadow: var(--box-shadow-medium);
-  object-fit: contain; /* Para ver toda la imagen sin recortar */
+  object-fit: contain;
 }
-/* Estilos para miniaturas si se añaden en el futuro
-.thumbnailContainer {
-  display: flex;
-  gap: var(--spacing-sm);
-  margin-top: var(--spacing-md);
-}
-.thumbnail {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  border: 2px solid transparent;
-}
-.thumbnail.active, .thumbnail:hover {
-  border-color: var(--color-primary);
-}
-*/
 
 .productInfo {
   display: flex;
@@ -59,25 +41,163 @@
   line-height: 1.2;
 }
 
+.priceSection { /* Contenedor para precio y enlace de cuotas */
+  margin-bottom: var(--spacing-lg);
+}
+
 .productPrice {
   font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
 }
 
-.shortDescription {
-  font-size: var(--font-size-md);
+.priceTag { /* Etiqueta (precio de contado) */
+  font-size: var(--font-size-sm);
+  font-weight: 400;
   color: var(--color-text-muted);
+  margin-left: var(--spacing-sm);
+  white-space: nowrap;
+}
+
+.viewInstallmentsLinkDetail { /* Enlace "ver precio en cuotas" */
+  font-size: var(--font-size-md);
+  color: var(--color-secondary);
+  text-decoration: underline;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: var(--spacing-xs);
+}
+.viewInstallmentsLinkDetail:hover {
+  color: #0056b3;
+}
+
+.acquisitionOptions {
+  margin-top: var(--spacing-md);
   margin-bottom: var(--spacing-lg);
-  line-height: 1.6;
+  padding: var(--spacing-md);
+  background-color: var(--color-background-medium);
+  border-radius: var(--border-radius-sm);
+}
+.optionsTitle {
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: var(--spacing-md);
+  text-align: center;
+}
+
+.planButtonsContainer {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.planButton {
+  min-width: 180px;
+  width: auto;
+  max-width: 220px;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-md);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  border: 2px solid var(--color-text-muted);
+  background-color: var(--color-background-light);
+  color: var(--color-text-dark);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.planButton svg {
+  margin-right: var(--spacing-sm);
+}
+
+.planButton.activePlan {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  border-color: var(--color-secondary);
+  box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
+}
+.planButton:not(.activePlan):hover {
+  border-color: var(--color-secondary);
+  background-color: #e9f5fa;
+}
+
+.installmentPlansSection { /* Sección para la tabla de cuotas */
+  margin-top: var(--spacing-md); /* Se anima con Framer Motion */
+  background-color: #fdfdfd; 
+  border-radius: var(--border-radius-sm);
+  padding: var(--spacing-xs); /* Pequeño padding alrededor de la tabla si es necesario */
+  /* box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); */
+}
+
+.selectedPlanInfo { /* Estilo para el texto que muestra el plan de cuotas seleccionado */
+    text-align: center;
+    margin-top: var(--spacing-sm);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    font-weight: 600; /* Más destacado */
+    color: var(--color-secondary);
+    background-color: #e9f5fa; /* Fondo azul claro */
+    border-radius: var(--border-radius-sm); /* Bordes más redondeados */
+    border: 1px solid var(--color-secondary); /* Borde sutil */
+}
+
+.selectionWarning {
+  color: var(--color-primary);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: center;
+  margin-top: var(--spacing-sm);
+  margin-bottom: var(--spacing-sm);
+  padding: var(--spacing-xs);
+  background-color: #ffebee;
+  border-radius: var(--border-radius-xs);
+}
+
+.addToCartButton {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-xl);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  margin-top: var(--spacing-sm);
+  width: 100%;
+  max-width: 350px;
+}
+.addToCartButton:hover:not(:disabled) {
+  background-color: #005f8c;
+}
+.addToCartButton:active:not(:disabled) {
+  transform: scale(0.98);
+}
+.addToCartButton:disabled {
+  background-color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.7;
 }
 
 .detailsTitle {
   font-size: var(--font-size-lg);
   font-weight: 600;
   color: var(--color-text-dark);
-  margin-top: var(--spacing-md);
+  margin-top: var(--spacing-lg);
   margin-bottom: var(--spacing-sm);
   border-bottom: 2px solid var(--color-background-medium);
   padding-bottom: var(--spacing-xs);
@@ -85,7 +205,7 @@
 
 .technicalDetails {
   list-style: disc;
-  padding-left: var(--spacing-lg); /* Para ver los bullets */
+  padding-left: var(--spacing-lg);
   margin-bottom: var(--spacing-xl);
   font-size: var(--font-size-md);
   color: var(--color-text-dark);
@@ -94,49 +214,27 @@
   margin-bottom: var(--spacing-xs);
 }
 
-.addToCartButton {
-  background-color: var(--color-secondary); /* Azul */
-  color: var(--color-text-light);
-  border: none;
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: flex-start; /* Para que no ocupe todo el ancho */
-}
-.addToCartButton:hover {
-  background-color: #005f8c; /* Azul más oscuro */
-}
-.addToCartButton:active {
-  transform: scale(0.98);
-}
-
-/* Media Queries para layout en desktop */
+/* Media Queries */
 @media (min-width: 768px) {
   .productDetailLayout {
-    grid-template-columns: 1fr 1fr; /* Dos columnas: imagen | información */
+    grid-template-columns: 1fr 1fr;
     gap: var(--spacing-xl);
-    align-items: flex-start; /* Alinea la parte superior de ambas columnas */
+    align-items: flex-start;
   }
   .mainImage {
     max-height: 600px;
   }
-  .productInfo {
-    /* Podríamos añadir un padding-left si es necesario */
+  .addToCartButton {
+    align-self: flex-start;
   }
-   .addToCartButton {
-    padding: var(--spacing-md) var(--spacing-xl); /* Asegurar buen tamaño en desktop */
+  .planButtonsContainer {
+    /* justify-content: flex-start; // Mantenemos centrado por defecto */
   }
 }
 
 @media (min-width: 1024px) {
     .productDetailLayout {
-        gap: var(--spacing-xxl); /* Más espacio en pantallas grandes */
-        grid-template-columns: 0.8fr 1.2fr; /* Dar un poco más de espacio a la info */
+        gap: var(--spacing-xxl);
+        grid-template-columns: 0.8fr 1.2fr;
     }
 }

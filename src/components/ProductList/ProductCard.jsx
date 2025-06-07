@@ -1,75 +1,82 @@
 // src/components/ProductList/ProductCard.jsx
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaShoppingCart, FaEye } from 'react-icons/fa';
-import { useCart } from '../../contexts/CartContext'; // Importa el hook del carrito
-import styles from './ProductList.module.css'; // Compartirá estilos con ProductList
+import { FaEye } from 'react-icons/fa';
+import styles from './ProductList.module.css';
+import Modal from '../common/Modal/Modal';
+import InstallmentTable from '../common/InstallmentTable/InstallmentTable';
+import { calculateAllPlanDetails } from '../../data/paymentPlans';
+import { toast } from 'react-toastify'; // <--- IMPORTAR toast
 
-const cardVariants = {
-  hidden: { opacity: 0, scale: 0.9 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.3, ease: "easeOut" }
-  },
-  hover: {
-    scale: 1.03,
-    boxShadow: "0px 8px 25px rgba(0,0,0,0.15)",
-    transition: { duration: 0.2 }
-  }
-};
+const cardVariants = { /* ... (sin cambios) ... */ };
 
 const ProductCard = ({ product }) => {
-  const { addToCart } = useCart(); // Obtiene la función addToCart del contexto
+  const [showInstallmentModal, setShowInstallmentModal] = useState(false);
+  const [calculatedPlans, setCalculatedPlans] = useState([]);
 
-  const handleAddToCart = (e) => {
-    e.preventDefault(); // Previene la navegación si el botón está dentro de un Link
-    e.stopPropagation(); // Previene que el click se propague al Link contenedor
-    addToCart(product);
-    alert(`${product.name} ha sido agregado al carrito.`); // Feedback simple por ahora
+  const handleViewInstallments = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const plans = calculateAllPlanDetails(product.price);
+    setCalculatedPlans(plans);
+    setShowInstallmentModal(true);
+    // toast.info("Mostrando planes de pago disponibles."); // Opcional: Notificación al abrir modal
+  };
+
+  const closeInstallmentModal = () => {
+    setShowInstallmentModal(false);
   };
 
   return (
-    <motion.div
-      className={styles.productCard}
-      variants={cardVariants}
-      initial="hidden"
-      animate="visible"
-      whileHover="hover"
-      layout // Permite animaciones de layout si la cuadrícula cambia
-    >
-      <Link to={`/producto/${product.id}`} className={styles.cardLinkWrapper}>
-        <div className={styles.imageContainer}>
-          <img src={product.image} alt={product.name} className={styles.productImage} />
-        </div>
-        <div className={styles.cardContent}>
-          <h3 className={styles.productName}>{product.name}</h3>
-          <p className={styles.productPrice}>
-            ${new Intl.NumberFormat('es-AR').format(product.price)}
-          </p>
-          {/* <p className={styles.shortDescription}>{product.shortDescription}</p> */}
-          {/* Mostramos solo los primeros 2 detalles técnicos para brevedad */}
-          <ul className={styles.technicalDetailsList}>
-            {product.technicalDetails.slice(0, 2).map((detail, index) => (
-              <li key={index} className={styles.technicalDetailItem}>{detail}</li>
-            ))}
-            {product.technicalDetails.length > 2 && <li className={styles.technicalDetailItem}>...más</li>}
-          </ul>
-        </div>
-      </Link>
-      <div className={styles.cardActions}>
-        <Link to={`/producto/${product.id}`} className={`${styles.actionButton} ${styles.viewDetailsButton}`}>
-          <FaEye className={styles.actionIcon} /> Ver Detalles
+    <>
+      <motion.div /* ... (sin cambios) ... */ >
+        {/* ... (contenido de la tarjeta sin cambios) ... */}
+         <Link to={`/producto/${product.id}`} className={styles.cardLinkWrapper}>
+          <div className={styles.imageContainer}>
+            <img src={product.image} alt={product.name} className={styles.productImage} />
+          </div>
+          <div className={styles.cardContent}>
+            <h3 className={styles.productName}>{product.name}</h3>
+            <div className={styles.priceContainer}>
+              <p className={styles.productPrice}>
+                ${new Intl.NumberFormat('es-AR').format(product.price)}
+                <span className={styles.priceTag}> (precio de contado)</span>
+              </p>
+              <button
+                onClick={handleViewInstallments}
+                className={styles.viewInstallmentsLink}
+              >
+                ver precio en cuotas
+              </button>
+            </div>
+            <ul className={styles.technicalDetailsList}>
+              {product.technicalDetails.slice(0, 2).map((detail, index) => (
+                <li key={index} className={styles.technicalDetailItem}>{detail}</li>
+              ))}
+              {product.technicalDetails.length > 2 && <li className={styles.technicalDetailItem}>...más</li>}
+            </ul>
+          </div>
         </Link>
-        <button
-          onClick={handleAddToCart}
-          className={`${styles.actionButton} ${styles.addToCartButton}`}
-        >
-          <FaShoppingCart className={styles.actionIcon} /> Agregar
-        </button>
-      </div>
-    </motion.div>
+        <div className={styles.cardActions}>
+          <Link to={`/producto/${product.id}`} className={`${styles.actionButton} ${styles.viewDetailsButton}`}>
+            <FaEye className={styles.actionIcon} /> Ver Detalles
+          </Link>
+        </div>
+      </motion.div>
+
+      <Modal
+        isOpen={showInstallmentModal}
+        onClose={closeInstallmentModal}
+        title={`Planes de Pago para ${product.name}`}
+      >
+        <InstallmentTable
+          calculatedPlans={calculatedPlans}
+          isInteractive={false}
+          productName={product.name}
+        />
+      </Modal>
+    </>
   );
 };
 
