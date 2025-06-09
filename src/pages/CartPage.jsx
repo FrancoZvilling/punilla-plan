@@ -24,7 +24,7 @@ const formatCurrency = (value) => {
 const CartPage = () => {
   const { cartItems, getTotalPrice, getTotalItems, clearCart: performClearCart } = useCart(); // Renombrar
   const navigate = useNavigate();
-  const whatsappNumber = "5493518354396";
+  const whatsappNumber = "5493541315119";
 
   const [showConfirmClearCartModal, setShowConfirmClearCartModal] = useState(false); // Estado para el modal
 
