@@ -38,7 +38,7 @@
   display: block;
   max-width: 150%;
   width: auto;
-  max-height: 300px; /* Ajusta según el tamaño deseado para tu logo */
+  max-height: 200px; /* Ajusta según el tamaño deseado para tu logo */
   object-fit: contain;
 }
 
@@ -59,3 +59,4 @@
     max-height: 250px;
   }
 }
+
