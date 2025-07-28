@@ -1,62 +1,42 @@
 /* src/components/HeroSection/HeroSection.module.css */
-.hero {
-  min-height: 50vh; /* Puedes ajustar la altura si ahora solo está el logo */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: var(--spacing-xl) var(--spacing-md);
-  position: relative;
-  overflow: hidden;
-  /* El fondo de imagen se mantiene */
-  background-image: url('../../assets/images/hero-background.jpg');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
+
+/* Contenedor principal del carrusel */
+.heroSlider {
+  min-height: 45vh; /* Mantenemos la altura */
+  position: relative; /* Clave para posicionar las imágenes de forma absoluta adentro */
+  overflow: hidden; /* Asegura que nada se salga del contenedor */
+  background-color: #333; /* Color de fondo mientras carga la primera imagen */
 }
 
-.hero::before { /* Overlay se mantiene */
+/* Overlay que se aplica sobre las imágenes */
+.heroSlider::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Ajusta la opacidad si es necesario */
-  z-index: 0;
+  background-color: rgba(0, 0, 0, 0.3); /* Overlay sutil */
+  z-index: 1; /* El overlay debe estar por encima de las imágenes */
 }
 
-/* Estilos para el contenedor de la imagen del logo */
-.logoImageContainer {
-  position: relative; /* Para z-index */
-  z-index: 1; /* Sobre el overlay */
-  /* Puedes añadir más estilos aquí si necesitas controlar el espaciado alrededor del logo */
+/* Estilo para cada imagen del slide */
+.slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  z-index: 0; /* Las imágenes están detrás del overlay */
 }
 
-.logoImage {
-  display: block;
-  max-width: 150%;
-  width: auto;
-  max-height: 200px; /* Ajusta según el tamaño deseado para tu logo */
-  object-fit: contain;
-}
-
-/* Estilos ELIMINADOS:
-.logoAndEffectContainer,
-.trailAndCircleContainer,
-.blueTrail,
-.redCircle,
-.subtitle (si no lo vas a usar)
-*/
 
 @media (min-width: 768px) {
-  .hero {
-    min-height: 45vh; /* Ajusta la altura en desktop */
-  }
-  .logoImage {
-    max-width: 350px;
-    max-height: 250px;
+  .heroSlider {
+    min-height: 50vh;
   }
 }
 

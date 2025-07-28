@@ -1,36 +1,48 @@
 // src/components/HeroSection/HeroSection.jsx
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import styles from './HeroSection.module.css';
-import logoImage from '../../assets/images/logo-punilla-plan.png'; // ASEGÚRATE QUE ESTA RUTA Y NOMBRE SON CORRECTOS
+
+// Importa tus imágenes para el carrusel desde la carpeta 'hero'
+import heroImage1 from '../../assets/images/hero/hero-1.jpg'; // Ruta corregida y sin ';'
+import heroImage2 from '../../assets/images/hero/hero-2.jpg';
+import heroImage3 from '../../assets/images/hero/hero-3.jpg';
+
+// El array ahora usa las imágenes locales importadas
+const heroImages = [
+  heroImage1,
+  heroImage2,
+  heroImage3
+];
 
 const HeroSection = () => {
+  const [imageIndex, setImageIndex] = useState(0);
+
+  useEffect(() => {
+    // Configura un intervalo para cambiar la imagen cada 3 segundos (3000 ms)
+    const interval = setInterval(() => {
+      setImageIndex((prevIndex) => (prevIndex + 1) % heroImages.length);
+    }, 4000);
+
+    // Limpia el intervalo cuando el componente se desmonta para evitar fugas de memoria
+    return () => clearInterval(interval);
+  }, []); // El array vacío [] asegura que el efecto se ejecute solo una vez (al montar)
+
   return (
-    <motion.section
-      className={styles.hero}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
-    >
-      {/* Contenedor del Logo Imagen (ya no necesita el logoAndEffectContainer si solo está el logo) */}
-      <motion.div
-        className={styles.logoImageContainer}
-        initial={{ opacity: 0, y: -30, scale: 0.9 }} // Animación de entrada para el logo
-        animate={{ opacity: 1, y: 0, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
-      >
-        <img 
-          src={logoImage} 
-          alt="Logo Punilla Plan" 
-          className={styles.logoImage} 
-          onError={(e) => { 
-            console.error("Error al cargar la imagen del logo:", e.target.src);
-            // Opcional: e.target.style.display = 'none'; 
-          }}
+    <section className={styles.heroSlider}>
+      <AnimatePresence>
+        <motion.div
+          key={imageIndex} // La key es crucial para que AnimatePresence detecte el cambio
+          className={styles.slideImage}
+          style={{ backgroundImage: `url(${heroImages[imageIndex]})` }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: 'easeInOut' }} // Duración de la transición de fundido
         />
-      </motion.div>
-      {/* No hay estela, ni círculo, ni texto "PP" o "Punilla Plan" */}
-    </motion.section>
+      </AnimatePresence>
+      {/* El overlay se maneja con el pseudo-elemento ::before en el CSS */}
+    </section>
   );
 };
 

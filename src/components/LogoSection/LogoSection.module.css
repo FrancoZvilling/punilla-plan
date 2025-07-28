@@ -1,0 +1,33 @@
+/* src/components/LogoSection/LogoSection.module.css */
+
+/* La sección del logo ahora es un bloque normal con fondo y padding */
+.logoSection {
+  background-color: var(--color-navy-blue); /* Fondo blanco/crema, el mismo que el catálogo */
+  padding: var(--spacing-xl) 0; /* Espaciado vertical para centrar el logo */
+  display: flex; /* Para centrar el logoWrapper */
+  justify-content: center;
+  align-items: center;
+}
+
+/* El wrapper del logo (opcional, pero bueno para la animación) */
+.logoWrapper {
+  /* No necesita posicionamiento especial ahora */
+}
+
+/* Estilos de la imagen del logo */
+.logoImage {
+  width: 180px; /* Ajusta el tamaño de tu logo */
+  height: 180px; /* Ajusta el tamaño de tu logo */
+  border-radius: 50%; /* Asegura forma redonda */
+  object-fit: cover;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.15); /* Sombra para dar profundidad */
+  display: block;
+}
+
+/* Ajustes para pantallas más grandes */
+@media (min-width: 768px) {
+  .logoImage {
+    width: 220px; /* Tamaño más grande para desktop */
+    height: 220px;
+  }
+}
