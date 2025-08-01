@@ -85,3 +85,19 @@
     font-size: var(--font-size-xl);
   }
 }
+
+/* --- NUEVO ESTILO PARA LAS TARJETAS DE MARCA --- */
+.brandCard {
+  /* Aquí puedes poner el color que quieras.
+     Puedes usar un color directo o una de tus variables CSS.
+     Ejemplo con un color azul secundario: */
+  background-color: var(--color-accent-mint);
+
+  /* Como el fondo es oscuro, el texto debe ser claro */
+  color: var(--color-text-light);
+}
+
+/* También necesitamos ajustar el color de la flecha para la tarjeta de marca */
+.brandCard .arrowIcon {
+    color: var(--color-text-light); /* Flecha blanca para contrastar */
+}

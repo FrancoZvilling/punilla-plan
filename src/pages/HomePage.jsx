@@ -6,6 +6,7 @@ import IndexSection from '../components/CatalogIndex/IndexSection';
 import ContactSection from '../components/ContactSection/ContactSection';
 import { categories } from '../data/categories'; // Importar datos de categorías
 import { brands } from '../data/brands'; // Importar datos de marcas
+import styles from '../components/CatalogIndex/CatalogIndex.module.css';
 
 const HomePage = () => {
   return (
@@ -26,6 +27,7 @@ const HomePage = () => {
         subtitle="Encuentra productos de tus marcas preferidas."
         items={brands}
         basePath="/marca" // Nota: esta ruta aún no existe, la crearemos después
+        cardClassName={styles.brandCard}
       />
       <ContactSection />
       {/* Quitamos el <p> de placeholder */}

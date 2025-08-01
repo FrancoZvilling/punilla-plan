@@ -5,7 +5,7 @@ import IndexCard from './IndexCard'; // Importa el nuevo IndexCard
 import styles from './CatalogIndex.module.css';
 
 // El componente ahora es genérico y recibe props
-const IndexSection = ({ title, subtitle, items, basePath }) => {
+const IndexSection = ({ title, subtitle, items, basePath, cardClassName }) => {
   return (
     <section className={styles.catalogIndexSection}>
       <div className="container">
@@ -29,7 +29,7 @@ const IndexSection = ({ title, subtitle, items, basePath }) => {
         </motion.p>
         <div className={styles.cardsContainer}>
           {items.map((item, index) => (
-            <IndexCard key={item.id} item={item} basePath={basePath} index={index} />
+            <IndexCard key={item.id} item={item} basePath={basePath} index={index} customClassName={cardClassName} />
           ))}
         </div>
       </div>

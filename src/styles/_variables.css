@@ -4,7 +4,7 @@
   --color-primary: #8B0000; /* Rojo Oscuro (clásico, como el círculo) */
   --color-secondary: #0077B6; /* Azul (estela, moderno) */
   --color-accent: #FFD700;   /* Dorado/Mostaza (toque de elegancia) */
-  --color-navy-blue: #008080;
+  
 
   /* Colores de Fondo y Texto */
   --color-background-light: #F8F8F8; /* Un blanco ligeramente cálido, tipo papel */
@@ -13,6 +13,12 @@
   --color-text-light: #FFFFFF;
   --color-text-dark: #2C2C2C; /* Un negro no tan puro, más suave */
   --color-text-muted: #757575;
+  --color-navy-blue: #008080;
+  --color-accent-mint: #A8DADC;
+  --color-accent-coral: #F19A8B;
+  --color-accent-sky: #A2D2FF;
+  --color-accent-lavender: #CDB4DB;
+  --color-accent-sand: #F3E9DC;
 
   /* Tipografía */
   --font-family-sans-serif: 'Helvetica Neue', Arial, sans-serif; /* Moderna y legible */

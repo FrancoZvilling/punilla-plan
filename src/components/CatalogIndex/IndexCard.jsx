@@ -18,11 +18,11 @@ const cardVariants = {
   }
 };
 
-// El componente ahora acepta un 'item' genérico
-const IndexCard = ({ item, basePath, index }) => {
+const IndexCard = ({ item, basePath, index, customClassName = '' }) => {
   return (
     <motion.div
-      className={styles.categoryCard} // Mantenemos la clase de estilo
+      // Usamos una plantilla de cadena para combinar las clases
+      className={`${styles.categoryCard} ${customClassName}`}
       custom={index}
       variants={cardVariants}
       initial="hidden"
@@ -30,7 +30,6 @@ const IndexCard = ({ item, basePath, index }) => {
       whileHover="hover"
     >
       <Link to={`${basePath}/${item.id}`} className={styles.cardLink}>
-        {/* Renderizar el logo si existe en el item */}
         {item.logo && <img src={item.logo} alt={`Logo de ${item.name}`} className={styles.cardLogo} />}
         <h3 className={styles.categoryName}>{item.name}</h3>
         <span className={styles.arrowIcon}>→</span>
