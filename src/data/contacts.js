@@ -18,9 +18,8 @@ export const whatsappContacts = {
     { name: "Gabriel", zone: "Carlos Paz", number: "3541633224" },
     { name: "Ivan", zone: "Tanti - Bialet Masse", number: "3541684942" },
     { name: "Jorge", zone: "Cosquín", number: "3515191878" },
-    { name: "Matías", zone: "V. Hermoso - V. Giardino", number: "3548503302" },
+    { name: "Matías", zone: "V. Hermoso - V. Giardino", number: "+543548503302" },
     { name: "Sergio", zone: "Cruz del eje", number: "3549504172" },
     { name: "Erika", zone: "Soto", number: "3549570515" },
-
   ],
 };
