@@ -52,6 +52,13 @@
   color: inherit;
 }
 
+.cardLogo {
+  width: 32px; /* Ajusta el tamaño del logo */
+  height: 32px;
+  margin-right: var(--spacing-md);
+  object-fit: contain; /* Para que el logo no se deforme */
+}
+
 .categoryName {
   font-size: var(--font-size-lg);
   font-weight: 600;

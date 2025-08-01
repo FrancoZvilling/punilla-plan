@@ -1,33 +1,35 @@
-// src/components/CatalogIndex/CatalogIndex.jsx
+// src/components/CatalogIndex/IndexSection.jsx
 import React from 'react';
 import { motion } from 'framer-motion';
-import { categories } from '../../data/categories';
-import CategoryCard from './CategoryCard';
+import IndexCard from './IndexCard'; // Importa el nuevo IndexCard
 import styles from './CatalogIndex.module.css';
 
-const CatalogIndex = () => {
+// El componente ahora es genérico y recibe props
+const IndexSection = ({ title, subtitle, items, basePath }) => {
   return (
     <section className={styles.catalogIndexSection}>
-      <div className="container"> {/* Clase de utilidad para centrar y padding */}
+      <div className="container">
         <motion.h2
           className={styles.sectionTitle}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          Nuestro Catálogo
+          {title}
         </motion.h2>
         <motion.p
           className={styles.sectionSubtitle}
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          Explora nuestras categorías de productos.
+          {subtitle}
         </motion.p>
         <div className={styles.cardsContainer}>
-          {categories.map((category, index) => (
-            <CategoryCard key={category.id} category={category} index={index} />
+          {items.map((item, index) => (
+            <IndexCard key={item.id} item={item} basePath={basePath} index={index} />
           ))}
         </div>
       </div>
@@ -35,4 +37,4 @@ const CatalogIndex = () => {
   );
 };
 
-export default CatalogIndex;
+export default IndexSection;

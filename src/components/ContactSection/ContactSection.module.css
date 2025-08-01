@@ -116,6 +116,83 @@
   background-color: #A32B72; /* Más oscuro en hover */
 }
 
+/* --- Estilos para el Contenido del Modal de WhatsApp --- */
+.whatsappModalLayout {
+  display: grid;
+  grid-template-columns: 1fr; /* Una columna en móvil */
+  gap: var(--spacing-xl);
+}
+
+.contactColumn {
+  /* Estilos para cada columna (Vendedores, Cobradores) */
+}
+
+.columnTitle {
+  font-size: var(--font-size-xl);
+  font-family: var(--font-family-serif);
+  color: var(--color-primary);
+  margin-bottom: var(--spacing-md);
+  border-bottom: 2px solid var(--color-background-medium);
+  padding-bottom: var(--spacing-sm);
+}
+
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md); /* Espacio entre contactos */
+}
+
+.contactItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm);
+  background-color: var(--color-background-medium);
+  border-radius: var(--border-radius-sm);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.contactName {
+  font-weight: 600;
+  font-size: var(--font-size-md);
+  color: var(--color-text-dark);
+}
+
+.contactZone {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: 2px;
+}
+
+.whatsappLinkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  background-color: #25D366; /* Verde WhatsApp */
+  color: white;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  transition: background-color 0.2s ease;
+  white-space: nowrap; /* Evita que el texto se parta */
+}
+.whatsappLinkButton:hover {
+  background-color: #1DAA54;
+}
+
+
+
 @media (min-width: 768px) {
   .contactOptions {
     grid-template-columns: repeat(2, 1fr); /* Dos columnas en desktop */
@@ -123,5 +200,8 @@
   }
   .optionCard {
     padding: var(--spacing-xl) var(--spacing-lg);
+  }
+  .whatsappModalLayout {
+    grid-template-columns: 1fr 1fr; /* Dos columnas en desktop */
   }
 }

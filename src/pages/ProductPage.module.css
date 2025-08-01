@@ -1,240 +1,57 @@
-/* src/pages/ProductPage.module.css */
 .productPageContainer {
-  /* Estilos generales de la página */
 }
-
 .backButton {
-  margin-bottom: var(--spacing-xl) !important;
-  font-size: var(--font-size-md);
+  margin-bottom: var(--spacing-xl) !important; font-size: var(--font-size-md);
 }
-
 .productDetailLayout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--spacing-xl);
+  display: grid; grid-template-columns: 1fr; gap: var(--spacing-xl);
 }
-
 .imageGallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
 }
-
 .mainImage {
-  max-width: 100%;
-  max-height: 500px;
-  border-radius: var(--border-radius-md);
-  box-shadow: var(--box-shadow-medium);
-  object-fit: contain;
+  max-width: 100%; max-height: 500px; border-radius: var(--border-radius-md); box-shadow: var(--box-shadow-medium); object-fit: contain;
 }
-
 .productInfo {
-  display: flex;
-  flex-direction: column;
+  display: flex; flex-direction: column;
 }
-
 .productName {
-  font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-xxl));
-  font-family: var(--font-family-serif);
-  color: var(--color-text-dark);
-  margin-bottom: var(--spacing-sm);
-  line-height: 1.2;
+  font-size: clamp(var(--font-size-xl), 6vw, var(--font-size-xxl)); font-family: var(--font-family-serif); color: var(--color-text-dark); margin-bottom: var(--spacing-sm); line-height: 1.2;
 }
-
-.priceSection { /* Contenedor para precio y enlace de cuotas */
-  margin-bottom: var(--spacing-lg);
-}
-
 .productPrice {
-  font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl));
-  font-weight: 700;
-  color: var(--color-primary);
-  margin-bottom: var(--spacing-xs);
-  display: flex;
-  align-items: baseline;
-  flex-wrap: wrap;
+  font-size: clamp(var(--font-size-lg), 5vw, var(--font-size-xl)); font-weight: 700; color: var(--color-primary); margin-bottom: var(--spacing-lg);
 }
-
-.priceTag { /* Etiqueta (precio de contado) */
-  font-size: var(--font-size-sm);
-  font-weight: 400;
-  color: var(--color-text-muted);
-  margin-left: var(--spacing-sm);
-  white-space: nowrap;
+.shortDescription {
+  font-size: var(--font-size-md); color: var(--color-text-muted); margin-bottom: var(--spacing-lg); line-height: 1.6;
 }
-
-.viewInstallmentsLinkDetail { /* Enlace "ver precio en cuotas" */
-  font-size: var(--font-size-md);
-  color: var(--color-secondary);
-  text-decoration: underline;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  margin-top: var(--spacing-xs);
-}
-.viewInstallmentsLinkDetail:hover {
-  color: #0056b3;
-}
-
-.acquisitionOptions {
-  margin-top: var(--spacing-md);
-  margin-bottom: var(--spacing-lg);
-  padding: var(--spacing-md);
-  background-color: var(--color-background-medium);
-  border-radius: var(--border-radius-sm);
-}
-.optionsTitle {
-  font-size: var(--font-size-md);
-  font-weight: 600;
-  color: var(--color-text-dark);
-  margin-bottom: var(--spacing-md);
-  text-align: center;
-}
-
-.planButtonsContainer {
-  display: flex;
-  gap: var(--spacing-md);
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.planButton {
-  min-width: 180px;
-  width: auto;
-  max-width: 220px;
-  padding: var(--spacing-sm) var(--spacing-md);
-  font-size: var(--font-size-md);
-  font-weight: 600;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  border: 2px solid var(--color-text-muted);
-  background-color: var(--color-background-light);
-  color: var(--color-text-dark);
-  transition: all 0.2s ease;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.planButton svg {
-  margin-right: var(--spacing-sm);
-}
-
-.planButton.activePlan {
-  background-color: var(--color-secondary);
-  color: var(--color-text-light);
-  border-color: var(--color-secondary);
-  box-shadow: 0 0 10px rgba(0, 119, 182, 0.5);
-}
-.planButton:not(.activePlan):hover {
-  border-color: var(--color-secondary);
-  background-color: #e9f5fa;
-}
-
-.installmentPlansSection { /* Sección para la tabla de cuotas */
-  margin-top: var(--spacing-md); /* Se anima con Framer Motion */
-  background-color: #fdfdfd; 
-  border-radius: var(--border-radius-sm);
-  padding: var(--spacing-xs); /* Pequeño padding alrededor de la tabla si es necesario */
-  /* box-shadow: inset 0 1px 3px rgba(0,0,0,0.05); */
-}
-
-.selectedPlanInfo { /* Estilo para el texto que muestra el plan de cuotas seleccionado */
-    text-align: center;
-    margin-top: var(--spacing-sm);
-    padding: var(--spacing-xs) var(--spacing-sm);
-    font-size: var(--font-size-sm);
-    font-weight: 600; /* Más destacado */
-    color: var(--color-secondary);
-    background-color: #e9f5fa; /* Fondo azul claro */
-    border-radius: var(--border-radius-sm); /* Bordes más redondeados */
-    border: 1px solid var(--color-secondary); /* Borde sutil */
-}
-
-.selectionWarning {
-  color: var(--color-primary);
-  font-size: var(--font-size-sm);
-  font-weight: 500;
-  text-align: center;
-  margin-top: var(--spacing-sm);
-  margin-bottom: var(--spacing-sm);
-  padding: var(--spacing-xs);
-  background-color: #ffebee;
-  border-radius: var(--border-radius-xs);
-}
-
 .addToCartButton {
-  background-color: var(--color-secondary);
-  color: var(--color-text-light);
-  border: none;
-  padding: var(--spacing-md) var(--spacing-xl);
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  border-radius: var(--border-radius-sm);
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease, opacity 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
-  margin-top: var(--spacing-sm);
-  width: 100%;
-  max-width: 350px;
+  background-color: var(--color-secondary); color: var(--color-text-light); border: none; padding: var(--spacing-md) var(--spacing-xl); font-size: var(--font-size-lg); font-weight: 600; border-radius: var(--border-radius-sm); cursor: pointer; transition: background-color 0.2s ease, transform 0.1s ease; display: inline-flex; align-items: center; justify-content: center; align-self: flex-start; width: auto; max-width: 350px;
 }
-.addToCartButton:hover:not(:disabled) {
+.addToCartButton:hover {
   background-color: #005f8c;
 }
-.addToCartButton:active:not(:disabled) {
+.addToCartButton:active {
   transform: scale(0.98);
 }
-.addToCartButton:disabled {
-  background-color: var(--color-text-muted);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
 .detailsTitle {
-  font-size: var(--font-size-lg);
-  font-weight: 600;
-  color: var(--color-text-dark);
-  margin-top: var(--spacing-lg);
-  margin-bottom: var(--spacing-sm);
-  border-bottom: 2px solid var(--color-background-medium);
-  padding-bottom: var(--spacing-xs);
+  font-size: var(--font-size-lg); font-weight: 600; color: var(--color-text-dark); margin-top: var(--spacing-lg); margin-bottom: var(--spacing-sm); border-bottom: 2px solid var(--color-background-medium); padding-bottom: var(--spacing-xs);
 }
-
 .technicalDetails {
-  list-style: disc;
-  padding-left: var(--spacing-lg);
-  margin-bottom: var(--spacing-xl);
-  font-size: var(--font-size-md);
-  color: var(--color-text-dark);
+  list-style: disc; padding-left: var(--spacing-lg); margin-bottom: var(--spacing-xl); font-size: var(--font-size-md); color: var(--color-text-dark);
 }
 .technicalDetails li {
   margin-bottom: var(--spacing-xs);
 }
-
-/* Media Queries */
 @media (min-width: 768px) {
   .productDetailLayout {
-    grid-template-columns: 1fr 1fr;
-    gap: var(--spacing-xl);
-    align-items: flex-start;
+    grid-template-columns: 1fr 1fr; gap: var(--spacing-xl); align-items: flex-start;
   }
   .mainImage {
     max-height: 600px;
   }
-  .addToCartButton {
-    align-self: flex-start;
-  }
-  .planButtonsContainer {
-    /* justify-content: flex-start; // Mantenemos centrado por defecto */
-  }
 }
-
 @media (min-width: 1024px) {
     .productDetailLayout {
-        gap: var(--spacing-xxl);
-        grid-template-columns: 0.8fr 1.2fr;
+        gap: var(--spacing-xxl); grid-template-columns: 0.8fr 1.2fr;
     }
 }

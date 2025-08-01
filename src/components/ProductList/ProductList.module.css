@@ -69,39 +69,22 @@
   margin-bottom: var(--spacing-sm);
 }
 
+.productName {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-text-dark);
+  min-height: 2.4em;
+}
+
+/* --- ESTILOS DE PRECIO SIMPLIFICADOS --- */
 .productPrice {
   font-size: var(--font-size-xl);
   font-weight: 700;
   color: var(--color-primary);
-  margin-bottom: var(--spacing-xs); /* Menor margen si el enlace va debajo */
-  display: flex; /* Para alinear el precio y la etiqueta si es necesario */
-  align-items: baseline; /* Alinea la base del precio y la etiqueta */
-  flex-wrap: wrap; /* Para que la etiqueta baje si no hay espacio */
+  margin-bottom: var(--spacing-sm); /* Margen normal */
+  /* Ya no necesita ser flex */
 }
-
-.priceTag {
-  font-size: var(--font-size-xs);
-  font-weight: 400;
-  color: var(--color-text-muted);
-  margin-left: var(--spacing-xs);
-  white-space: nowrap; /* Evita que se parta la etiqueta */
-}
-
-.viewInstallmentsLink {
-  font-size: var(--font-size-sm);
-  color: var(--color-secondary); /* Azul para invitar al click */
-  text-decoration: underline;
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0; /* Sin padding para que parezca más un enlace */
-  display: inline; /* Para que esté en línea con el flujo de texto si es posible */
-  margin-top: var(--spacing-xs); /* Pequeño espacio arriba */
-}
-.viewInstallmentsLink:hover {
-  color: #0056b3; /* Azul más oscuro en hover */
-}
-/* --- FIN DE NUEVOS ESTILOS --- */
 
 .technicalDetailsList {
   font-size: var(--font-size-xs);

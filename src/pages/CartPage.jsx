@@ -22,47 +22,20 @@ const formatCurrency = (value) => {
 };
 
 const CartPage = () => {
-  const { cartItems, getTotalPrice, getTotalItems, clearCart: performClearCart } = useCart(); // Renombrar
+  const { cartItems, getTotalItems, clearCart } = useCart(); // Quitamos getTotalPrice
   const navigate = useNavigate();
-  const whatsappNumber = "5493541315119";
-
-  const [showConfirmClearCartModal, setShowConfirmClearCartModal] = useState(false); // Estado para el modal
+  const whatsappNumber = "5493518354396";
 
   const handleCheckout = () => {
     if (cartItems.length === 0) return;
-    let message = "Hola! Quisiera realizar el siguiente pedido:\n\n";
+    let message = "Hola! Quisiera consultar por los siguientes productos:\n\n";
     cartItems.forEach(item => {
-      message += `${item.quantity}x ${item.name}`;
-      if (item.planDescription) {
-        message += ` (${item.planDescription})`;
-      }
-      message += ` - ${formatCurrency(item.finalPrice * item.quantity)}\n`;
-      if (item.purchaseType === 'cuotas' && item.installmentDetails) {
-          message += `    (Detalle: ${item.installmentDetails.days} cuotas diarias de ${formatCurrency(item.installmentDetails.dailyPayment)})\n`;
-      }
+      message += `${item.quantity}x ${item.name}\n`; // Mensaje solo con cantidad y nombre
     });
-    message += `\nTotal del Pedido: ${formatCurrency(getTotalPrice())}`;
+    message += `\nTotal de productos: ${getTotalItems()}`;
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
-
-  const handleOpenClearCartModal = () => {
-    if (cartItems.length > 0) {
-      setShowConfirmClearCartModal(true);
-    } else {
-      toast.info("El carrito ya está vacío.");
-    }
-  };
-
-  const handleConfirmClearCart = () => {
-    performClearCart(); // Llama a la función del contexto (que ya tiene su toast.warn)
-    setShowConfirmClearCartModal(false);
-  };
-
-  const handleCloseClearCartModal = () => {
-    setShowConfirmClearCartModal(false);
-  };
-
 
   return (
     <motion.div
@@ -72,9 +45,9 @@ const CartPage = () => {
       <div className="container">
         <button onClick={() => navigate(-1)} className={`${pageStyles.backLink} ${styles.backButtonCart}`}>
           <FaArrowLeft style={{ marginRight: '8px' }} />
-          Seguir Comprando
+          Seguir Viendo Productos
         </button>
-        <h1 className={styles.cartTitle}>Tu Carrito de Compras</h1>
+        <h1 className={styles.cartTitle}>Tu Pedido</h1>
 
         {cartItems.length === 0 ? (
           <div className={styles.emptyCartMessage}>
@@ -85,59 +58,28 @@ const CartPage = () => {
           <div className={styles.cartGrid}>
             <div className={styles.cartItemsList}>
               {cartItems.map(item => (
-                <CartItem key={`${item.id}-${item.planDescription}`} item={item} />
+                <CartItem key={item.id} item={item} />
               ))}
             </div>
 
             <aside className={styles.cartSummary}>
               <h2 className={styles.summaryTitle}>Resumen del Pedido</h2>
               <div className={styles.summaryRow}>
-                <span>Subtotal ({getTotalItems()} productos):</span>
-                <span>{formatCurrency(getTotalPrice())}</span>
-              </div>
-              <div className={`${styles.summaryRow} ${styles.total}`}>
-                <span>Total:</span>
-                <span>{formatCurrency(getTotalPrice())}</span>
+                <span>Total de productos:</span>
+                <span>{getTotalItems()}</span>
               </div>
               <button onClick={handleCheckout} className={styles.checkoutButton}>
                 <FaWhatsapp style={{ marginRight: '10px' }} />
-                Finalizar Compra por WhatsApp
+                Consultar por WhatsApp
               </button>
-              <button onClick={handleOpenClearCartModal} className={styles.clearCartButton}>
-                Vaciar Carrito
+              <button onClick={clearCart} className={styles.clearCartButton}>
+                Vaciar Pedido
               </button>
             </aside>
           </div>
         )}
       </div>
-
-      <Modal
-        isOpen={showConfirmClearCartModal}
-        onClose={handleCloseClearCartModal}
-        title="Confirmar Acción"
-      >
-        <div className={styles.confirmModalContent}>
-          <p>¿Estás seguro de que deseas vaciar el carrito?</p>
-          <div className={styles.confirmModalActions}>
-            <motion.button
-              className={`${styles.modalButton} ${styles.modalButtonConfirm}`}
-              onClick={handleConfirmClearCart}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Sí, Vaciar
-            </motion.button>
-            <motion.button
-              className={`${styles.modalButton} ${styles.modalButtonCancel}`}
-              onClick={handleCloseClearCartModal}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Cancelar
-            </motion.button>
-          </div>
-        </div>
-      </Modal>
+      {/* El modal de confirmación de vaciar carrito puede seguir aquí si quieres */}
     </motion.div>
   );
 };

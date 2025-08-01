@@ -7,6 +7,7 @@ import CategoryPage from './pages/CategoryPage';
 import ProductPage from './pages/ProductPage';
 import CartPage from './pages/CartPage';
 import NotFoundPage from './pages/NotFoundPage';
+import BrandPage from './pages/BrandPage';
 
 import Footer from './components/layout/Footer/Footer';
 import CartHeaderButton from './components/Cart/CartHeaderButton';
@@ -31,6 +32,7 @@ function App() {
           <Routes location={location} key={location.pathname}>
             <Route path="/" element={<HomePage />} />
             <Route path="/categoria/:categoryId" element={<CategoryPage />} />
+            <Route path="/marca/:brandId" element={<BrandPage />} />
             <Route path="/producto/:productId" element={<ProductPage />} />
             <Route path="/carrito" element={<CartPage />} />
             <Route path="*" element={<NotFoundPage />} />
